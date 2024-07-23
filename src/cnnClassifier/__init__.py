@@ -19,7 +19,8 @@ logging.basicConfig(
     level=logging.INFO,
     format=logging_str,
     handlers=[
-        logging.FileHandler(LOG_FILE_PATH)
+        logging.FileHandler(LOG_FILE_PATH),
+        logging.StreamHandler(sys.stdout)
     ]
 )
 
