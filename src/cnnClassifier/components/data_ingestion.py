@@ -29,5 +29,9 @@ class DataIngestion:
         """
         unzip_path=self.config.unzip_dir
         os.makedirs(unzip_path,exist_ok=True)
-        with zipfile.ZipFile(self.config.local_data_file,'r') as zip_ref:
-            zip_ref.extractall(unzip_path)
+        number_of_files_in_unzip_path=len(os.listdir(unzip_path))
+        if number_of_files_in_unzip_path==1:
+            with zipfile.ZipFile(self.config.local_data_file,'r') as zip_ref:
+                zip_ref.extractall(unzip_path)
+        else:
+            logger.info(f"directory already has {number_of_files_in_unzip_path} files and/or folders")
